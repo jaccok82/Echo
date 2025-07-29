@@ -1,0 +1,1 @@
+// JS placeholder voor Echo stemherkenning + mimiek
