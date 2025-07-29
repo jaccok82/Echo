@@ -3,59 +3,99 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echo - Inloggen</title>
+    <title>Echo Demo</title>
     <style>
-        body {
+        html, body {
             margin: 0;
+            padding: 0;
+            background: black;
+            height: 100%;
             font-family: Arial, sans-serif;
-            background: #0a0a1a;
+            overflow: hidden;
+        }
+        .avatar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('echo-face.png') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .controls label, .controls input {
             color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            text-align: center;
+            display: block;
+            margin-bottom: 8px;
         }
-        .logo {
-            margin-top: 40px;
-            margin-bottom: 30px;
-        }
-        .logo img {
-            width: 200px;
-            max-width: 80vw;
-        }
-        p {
-            font-size: 18px;
-            margin: 0 20px 30px 20px;
-        }
-        .button {
-            background-color: #3346ff;
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #3346ff;
             color: white;
             border: none;
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 16px;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            width: 80%;
-            max-width: 300px;
-        }
-        .info-link {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #aaa;
         }
     </style>
 </head>
 <body>
-    <div class="logo">
-        <img src="echo-logo.png" alt="Echo Logo">
+    <div class="avatar" id="avatar"></div>
+    <div class="controls">
+        <label for="volume">Volume</label>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+        <label><input type="checkbox" id="mimic" checked> Mimiek aan</label>
+        <button onclick="startListening()">Praat met Echo</button>
     </div>
-    <p>Welkom bij Echo, jouw AI om mee te praten, vragen te stellen en steun te vinden.</p>
-    <button class="button" onclick="location.href='ai.html'">Inloggen</button>
-    <button class="button" onclick="location.href='ai.html'">Account aanmaken</button>
-    <div class="info-link">Meer informatie over Echo</div>
+    <script>
+        const synth = window.speechSynthesis;
+        const volumeSlider = document.getElementById('volume');
+        let mimicEnabled = true;
+
+        document.getElementById('mimic').addEventListener('change', (e) => {
+            mimicEnabled = e.target.checked;
+            document.getElementById('avatar').style.filter = mimicEnabled ? 'brightness(1)' : 'grayscale(100%)';
+        });
+
+        function speak(text) {
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.volume = parseFloat(volumeSlider.value);
+            synth.speak(utter);
+        }
+
+        function startListening() {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("Deze demo werkt alleen in Chrome.");
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'nl-NL';
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                console.log("Gebruiker zei:", transcript);
+                respondTo(transcript);
+            };
+
+            recognition.onerror = function(event) {
+                alert("Er ging iets mis met luisteren: " + event.error);
+            };
+        }
+
+        function respondTo(input) {
+            speak("Hoi Jacco, ik ben blij dat je er bent. Waar wil je over praten?");
+        }
+    </script>
 </body>
 </html>
