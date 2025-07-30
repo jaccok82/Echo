@@ -1,101 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Echo Demo</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            background: black;
-            height: 100%;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
-        .avatar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: url('echo-face.png') no-repeat center center;
-            background-size: cover;
-            z-index: 1;
-        }
-        .controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 2;
-            background: rgba(0,0,0,0.5);
-            padding: 10px;
-            border-radius: 8px;
-        }
-        .controls label, .controls input {
-            color: white;
-            display: block;
-            margin-bottom: 8px;
-        }
-        button {
-            padding: 10px 15px;
-            font-size: 16px;
-            background: #3346ff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Echo - Een vriend voor iedereen die er één mist</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    img.logo {
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    a.button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
-    <div class="avatar" id="avatar"></div>
-    <div class="controls">
-        <label for="volume">Volume</label>
-        <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
-        <label><input type="checkbox" id="mimic" checked> Mimiek aan</label>
-        <button onclick="startListening()">Praat met Echo</button>
-    </div>
-    <script>
-        const synth = window.speechSynthesis;
-        const volumeSlider = document.getElementById('volume');
-        let mimicEnabled = true;
-
-        document.getElementById('mimic').addEventListener('change', (e) => {
-            mimicEnabled = e.target.checked;
-            document.getElementById('avatar').style.filter = mimicEnabled ? 'brightness(1)' : 'grayscale(100%)';
-        });
-
-        function speak(text) {
-            const utter = new SpeechSynthesisUtterance(text);
-            utter.volume = parseFloat(volumeSlider.value);
-            synth.speak(utter);
-        }
-
-        function startListening() {
-            if (!('webkitSpeechRecognition' in window)) {
-                alert("Deze demo werkt alleen in Chrome.");
-                return;
-            }
-
-            const recognition = new webkitSpeechRecognition();
-            recognition.lang = 'nl-NL';
-            recognition.start();
-
-            recognition.onresult = function(event) {
-                const transcript = event.results[0][0].transcript;
-                console.log("Gebruiker zei:", transcript);
-                respondTo(transcript);
-            };
-
-            recognition.onerror = function(event) {
-                alert("Er ging iets mis met luisteren: " + event.error);
-            };
-        }
-
-        function respondTo(input) {
-            speak("Hoi Jacco, ik ben blij dat je er bent. Waar wil je over praten?");
-        }
-    </script>
+  <div class="container">
+    <img src="logo-echo.png" alt="Echo Logo" class="logo" />
+    <h2>Inloggen bij Echo</h2>
+    <input type="text" placeholder="Gebruikersnaam" />
+    <input type="password" placeholder="Wachtwoord" />
+    <a href="chat.html" class="button">Log in</a>
+    <div class="footer">Een project van AiMain</div>
+  </div>
 </body>
 </html>
