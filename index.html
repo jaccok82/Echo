@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inloggen bij Echo</title>
   <style>
     body {
@@ -13,22 +13,19 @@
       margin: 0;
       padding: 0;
     }
-
     .logo {
       margin-top: 50px;
       width: 120px;
       height: auto;
     }
-
     .login-container {
       max-width: 400px;
       margin: 30px auto;
       background-color: #111;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 10px #000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
     }
-
     input[type="text"],
     input[type="password"] {
       width: 90%;
@@ -38,7 +35,6 @@
       border-radius: 5px;
       font-size: 16px;
     }
-
     button {
       background-color: #1DB954;
       color: white;
@@ -48,11 +44,9 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     button:hover {
-      background-color: #17a54d;
+      background-color: #17a44a;
     }
-
     .footer {
       margin-top: 40px;
       font-size: 14px;
@@ -62,13 +56,16 @@
 </head>
 <body>
 
-  <img class="logo" src="echo-logo.png" alt="Echo logo" />
+  <!-- Logo -->
+  <img src="echo-logo.png" alt="Echo logo" class="logo">
 
+  <!-- Inlogformulier -->
   <div class="login-container">
     <h1>Inloggen bij Echo</h1>
-    <input type="text" placeholder="Gebruikersnaam" />
-    <input type="password" placeholder="Wachtwoord" />
-    <br /><br />
+    <input type="text" placeholder="Gebruikersnaam">
+    <br><br>
+    <input type="password" placeholder="Wachtwoord">
+    <br><br>
     <button onclick="window.location.href='ai.html'">Log in</button>
   </div>
 
