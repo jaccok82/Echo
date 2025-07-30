@@ -1,74 +1,78 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <title>Echo - Inloggen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inloggen bij Echo</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #0d0d0d;
+      background-color: #000;
       color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-image: url('echo-face.png');
-      background-size: cover;
-      background-position: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
     }
-    .container {
-      background: rgba(0, 0, 0, 0.7);
+
+    .logo {
+      margin-top: 50px;
+      width: 120px;
+      height: auto;
+    }
+
+    .login-container {
+      max-width: 400px;
+      margin: 30px auto;
+      background-color: #111;
       padding: 30px;
       border-radius: 10px;
-      text-align: center;
+      box-shadow: 0 0 10px #000;
     }
-    img {
-      width: 150px;
-      margin-bottom: 20px;
-    }
-    input[type="text"], input[type="password"] {
-      padding: 10px;
-      margin: 10px 0;
+
+    input[type="text"],
+    input[type="password"] {
       width: 90%;
-      max-width: 250px;
+      padding: 15px;
+      margin: 15px 0;
+      border: none;
       border-radius: 5px;
-      border: none;
+      font-size: 16px;
     }
+
     button {
-      padding: 10px 20px;
-      background-color: #00ff99;
-      color: black;
+      background-color: #1DB954;
+      color: white;
       border: none;
+      padding: 15px 30px;
+      font-size: 18px;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 10px;
     }
-    a {
-      display: block;
-      margin-top: 15px;
-      color: #00ffcc;
-      text-decoration: none;
+
+    button:hover {
+      background-color: #17a54d;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="echo-logo.png" alt="Echo logo">
-    <h2>Inloggen</h2>
-    <input type="text" id="username" placeholder="Gebruikersnaam"><br>
-    <input type="password" id="password" placeholder="Wachtwoord"><br>
-    <button onclick="login()">Log in</button>
-    <a href="registreer.html">Nog geen account?</a>
+
+  <img class="logo" src="echo-logo.png" alt="Echo logo" />
+
+  <div class="login-container">
+    <h1>Inloggen bij Echo</h1>
+    <input type="text" placeholder="Gebruikersnaam" />
+    <input type="password" placeholder="Wachtwoord" />
+    <br /><br />
+    <button onclick="window.location.href='ai.html'">Log in</button>
   </div>
 
-  <script>
-    function login() {
-      // Demo-login zonder validatie
-      window.location.href = "ai.html";
-    }
-  </script>
+  <div class="footer">Een project van AiMain</div>
+
 </body>
 </html>
