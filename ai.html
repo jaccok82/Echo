@@ -3,70 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Echo - Een vriend voor iedereen die er één mist</title>
+  <title>Inloggen bij Echo</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       background-color: #000;
       color: white;
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       text-align: center;
+      margin: 0;
+      padding: 0;
     }
 
-    img.logo {
-      max-width: 300px;
+    .logo {
+      margin-top: 50px;
+      width: 120px;
       height: auto;
-      margin-bottom: 30px;
     }
 
-    .container {
-      width: 100%;
+    .login-container {
       max-width: 400px;
+      margin: 30px auto;
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,255,0,0.3);
     }
 
     input[type="text"],
     input[type="password"] {
-      width: 100%;
+      width: 90%;
       padding: 15px;
-      margin: 10px 0;
+      margin: 15px 0;
       border: none;
       border-radius: 5px;
       font-size: 16px;
     }
 
     button {
-      width: 100%;
-      padding: 15px;
-      background-color: #4caf50;
+      background-color: #1db954;
       color: white;
       border: none;
+      padding: 15px 30px;
+      font-size: 18px;
       border-radius: 5px;
-      font-size: 16px;
       cursor: pointer;
-      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #17a94e;
     }
 
     .footer {
       margin-top: 40px;
-      font-size: 12px;
-      opacity: 0.6;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="logo-echo.png" alt="Echo Logo" class="logo" />
-    <h2>Inloggen bij Echo</h2>
+
+  <!-- Correcte afbeelding die geladen wordt vanaf GitHub -->
+  <img src="echo-logo.png" alt="Echo Logo" class="logo" />
+
+  <div class="login-container">
+    <h1>Inloggen bij Echo</h1>
     <input type="text" placeholder="Gebruikersnaam" />
     <input type="password" placeholder="Wachtwoord" />
-    <button onclick="alert('Inloggen gesimuleerd. Ga naar AI.')">Log in</button>
-    <div class="footer">Een project van AiMain</div>
+    <br /><br />
+    <button>Log in</button>
   </div>
+
+  <div class="footer">Een project van AiMain</div>
+
 </body>
 </html>
