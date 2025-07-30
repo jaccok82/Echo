@@ -1,72 +1,72 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inloggen bij Echo</title>
+  <meta charset="UTF-8">
+  <title>Echo - Inloggen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: url('echo-face.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
       text-align: center;
-      padding-top: 80px;
     }
     img {
-      width: 100px;
+      width: 150px;
       margin-bottom: 20px;
     }
-    input {
-      display: block;
-      margin: 10px auto;
-      padding: 12px;
-      width: 80%;
-      max-width: 300px;
-      border: none;
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      margin: 10px 0;
+      width: 90%;
+      max-width: 250px;
       border-radius: 5px;
+      border: none;
     }
     button {
-      padding: 12px 25px;
-      background-color: #1db954;
+      padding: 10px 20px;
+      background-color: #00ff99;
+      color: black;
       border: none;
-      color: white;
-      font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
-    }
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      color: #888;
+      margin-top: 10px;
     }
     a {
-      color: #1db954;
+      display: block;
+      margin-top: 15px;
+      color: #00ffcc;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <img src="echo-logo.png" alt="Echo logo" />
-  <h2>Inloggen bij Echo</h2>
-  <input type="text" id="username" placeholder="Gebruikersnaam" />
-  <input type="password" id="password" placeholder="Wachtwoord" />
-  <button onclick="inloggen()">Log in</button>
-  <a href="registreer.html">Nog geen account? Registreer</a>
-  <div class="footer">Een project van AiMain</div>
+  <div class="container">
+    <img src="echo-logo.png" alt="Echo logo">
+    <h2>Inloggen</h2>
+    <input type="text" id="username" placeholder="Gebruikersnaam"><br>
+    <input type="password" id="password" placeholder="Wachtwoord"><br>
+    <button onclick="login()">Log in</button>
+    <a href="registreer.html">Nog geen account?</a>
+  </div>
 
   <script>
-    function inloggen() {
-      const gebruiker = document.getElementById("username").value.trim();
-      const wachtwoord = document.getElementById("password").value.trim();
-
-      if (!gebruiker || !wachtwoord) {
-        alert("Vul je gebruikersnaam en wachtwoord in.");
-        return;
-      }
-
-      // Voor nu: altijd doorsturen naar ai.html
+    function login() {
+      // Demo-login zonder validatie
       window.location.href = "ai.html";
     }
   </script>
