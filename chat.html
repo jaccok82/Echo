@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Praat met Echo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000016;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #000022;
+      border-bottom: 1px solid #222;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    .chat-container {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      max-width: 75%;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border-radius: 12px;
+      line-height: 1.4;
+    }
+
+    .user {
+      background-color: #3b5bff;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    .ai {
+      background-color: #222;
+      align-self: flex-start;
+      margin-right: auto;
+    }
+
+    .input-container {
+      display: flex;
+      padding: 10px;
+      background-color: #000022;
+      border-top: 1px solid #222;
+    }
+
+    .input-container input {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+
+    .input-container button {
+      padding: 12px 18px;
+      background-color: #3b5bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .input-container button:hover {
+      background-color: #2847e3;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="echo-logo.png" alt="Echo Logo">
+  </header>
+
+  <div class="chat-container" id="chat">
+    <div class="message ai">Hoi! Ik ben Echo. Waar wil je het vandaag over hebben?</div>
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="userInput" placeholder="Typ hier je bericht..." autocomplete="off">
+    <button onclick="sendMessage()">Verstuur</button>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (message === '') return;
+
+      // Voeg gebruiker bericht toe
+      const chat = document.getElementById('chat');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = message;
+      chat.appendChild(userMsg);
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+
+      // Voeg laad-bericht van AI toe
+      const aiMsg = document.createElement('div');
+      aiMsg.className = 'message ai';
+      aiMsg.textContent = '...';
+      chat.appendChild(aiMsg);
+      chat.scrollTop = chat.scrollHeight;
+
+      try {
+        // Echte AI response via OpenAI API
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer YOUR_OPENAI_API_KEY' // <-- Vul jouw key in
+          },
+          body: JSON.stringify({
+            model: 'gpt-4',
+            messages: [{ role: 'user', content: message }]
+          })
+        });
+
+        const data = await response.json();
+        const reply = data.choices?.[0]?.message?.content || 'Sorry, er ging iets mis.';
+        aiMsg.textContent = reply;
+      } catch (err) {
+        aiMsg.textContent = 'Er ging iets mis met de AI-verbinding.';
+      }
+
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
