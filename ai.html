@@ -1,8 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="nl">
-<head><meta charset="UTF-8"><title>Echo AI</title></head>
-<body style="background:#111;color:white;text-align:center;padding-top:100px;font-family:sans-serif;">
-<h1>Welkom terug bij Echo</h1><p>Je bent nu ingelogd en kunt met Echo praten.</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Echo - Een vriend voor iedereen die er één mist</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    img.logo {
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo-echo.png" alt="Echo Logo" class="logo" />
+    <h2>Inloggen bij Echo</h2>
+    <input type="text" placeholder="Gebruikersnaam" />
+    <input type="password" placeholder="Wachtwoord" />
+    <button onclick="alert('Inloggen gesimuleerd. Ga naar AI.')">Log in</button>
+    <div class="footer">Een project van AiMain</div>
+  </div>
 </body>
 </html>
