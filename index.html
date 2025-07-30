@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inloggen bij Echo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welkom bij Echo</title>
   <style>
     body {
-      background-color: #000;
+      background-color: #000016;
       color: white;
       font-family: Arial, sans-serif;
-      text-align: center;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
+
+    .container {
+      padding: 50px 20px;
+    }
+
     .logo {
-      margin-top: 50px;
-      width: 120px;
-      height: auto;
+      width: 140px;
+      margin-bottom: 20px;
     }
-    .login-container {
-      max-width: 400px;
-      margin: 30px auto;
-      background-color: #111;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #1d7eff;
     }
-    input[type="text"],
-    input[type="password"] {
-      width: 90%;
+
+    p {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: block;
+      width: 80%;
+      max-width: 300px;
+      margin: 10px auto;
       padding: 15px;
-      margin: 15px 0;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    button {
-      background-color: #1DB954;
+      font-size: 18px;
+      background-color: #3b5bff;
       color: white;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      text-decoration: none;
     }
-    button:hover {
-      background-color: #17a44a;
+
+    .btn:hover {
+      background-color: #2847e3;
     }
+
     .footer {
       margin-top: 40px;
       font-size: 14px;
-      color: #888;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <img src="echo-logo.png" alt="Echo logo" class="logo" />
+    <h1>Echo</h1>
+    <p>Welkom bij Echo, jouw AI om mee te praten, vragen te stellen en steun te vinden.</p>
 
-  <!-- Logo -->
-  <img src="echo-logo.png" alt="Echo logo" class="logo">
+    <a href="index.html" class="btn">Inloggen</a>
+    <a href="registreer.html" class="btn">Account aanmaken</a>
 
-  <!-- Inlogformulier -->
-  <div class="login-container">
-    <h1>Inloggen bij Echo</h1>
-    <input type="text" placeholder="Gebruikersnaam">
-    <br><br>
-    <input type="password" placeholder="Wachtwoord">
-    <br><br>
-    <button onclick="window.location.href='ai.html'">Log in</button>
+    <div class="footer">Meer informatie over Echo</div>
   </div>
-
-  <div class="footer">Een project van AiMain</div>
-
 </body>
 </html>
